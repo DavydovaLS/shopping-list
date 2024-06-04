@@ -1,24 +1,26 @@
-const groceries = document.querySelector('.groceries');
-const inputForm = document.querySelector('#input');
-const labelForm = document.querySelector('#items');
+const boxInput = document.querySelector('#input');
+const itemsContainer = document.querySelector('#items');
 
-labelForm.addEventListener('keydown', function(event) {
+boxInput.addEventListener('keydown', function(event) {
     if (event.key == 'Enter') {
-        const labelText = inputForm.value;
-        const newItem = documentCreateElement('div');
+        const shopText = boxInput.value;
+        
+        const newItem = document.createElement('div');
         newItem.classList.add('items');
-        newItem.textContent = labelText;
+        newItem.textContent = shopText;
 
-        if (labelText != '') {
-            groceries.append(newItem);
+        if (shopText != '') {
+            itemsContainer.append(newItem);
         }
-    inputForm.value = '';
-    }
+        
+        newItem.addEventListener('click', function() {
+            newItem.classList.toggle('done');   
+            });
+
+        boxInput.value = '';
+    }    
 });
 
-newItem.addEventListener('click', function() {
-    newItem.classList.toggle('done');
-});
 
 
 
